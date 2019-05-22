@@ -1,29 +1,28 @@
 require 'pry'
+  class School
 
+    attr_reader :name, :roster, :grade
 
-class School
-
-  attr_reader :name, :roster, :grade
-
-  def initialize(name)
-    @name = name
-    @roster = {}
-  end
-
-  def add_student(name, grade)
-    if roster[grade] ||= []
-       roster[grade] << name
+    def initialize(name)
+      @name = name
+      @roster = {}
     end
-  end
 
-  def grade(grade)
-    roster[grade]
-  end
-
-  def sort
-    roster.each do |grade, student|
-      student.sort!
+    def add_student(name, grade)
+          roster[grade] ||= []
+         roster[grade] << name
     end
-  end
 
-end
+    def grade(grade)
+      roster[grade]
+    end
+
+    def sort
+      sorted_hash = {}
+      roster.each do |grade, student|
+        sorted_hash[grade] = student.sort
+      end
+      sorted_hash
+    end
+
+  end
